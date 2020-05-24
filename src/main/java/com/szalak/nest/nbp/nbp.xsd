@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="http://szalak.com/zadanie"
+           targetNamespace="http://szalak.com/zadanie"
+>
+    <xs:element name="getCurrency">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="currecny" type="xs:string"/>
+                <xs:element name="startDate" type="xs:string"/>
+                <xs:element name="endDate" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="rates" type="tns:rates" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="currency">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="table" type="xs:string"/>
+            <xs:element name="currency" type="xs:string"/>
+            <xs:element name="code" type="xs:string"/>
+            <xs:element name="rates" type="tns:rates" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="rates">
+        <xs:sequence>
+            <xs:element name="no" type="xs:string"/>
+            <xs:element name="effectiveDate" type="xs:string"/>
+            <xs:element name="bid" type="xs:double"/>
+            <xs:element name="ask" type="xs:double"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>
